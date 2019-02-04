@@ -8,10 +8,11 @@
     "noUnusedLocals": true,
     "outDir": "lib",
     "rootDir": "src",
+    "skipLibCheck": true,
     "strict": true,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "target": "es2015",
-    "types": []
+    "jsx": "react"
   },
-  "include": ["src/*"]
+  "include": ["src/**/*"]
 }
