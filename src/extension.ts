@@ -17,11 +17,10 @@ import '../style/index.css';
 import { IVariableRegistry, VariableRegistry } from './registry';
 import { Hephaistos } from './variable';
 
-
 /**
  * Initialization data for the hephaistos extension.
  */
-const extension: JupyterLabPlugin<IVariableRegistry>  = {
+const extension: JupyterLabPlugin<IVariableRegistry> = {
   id: 'hephaistos',
   autoStart: true,
   requires: [
@@ -33,7 +32,7 @@ const extension: JupyterLabPlugin<IVariableRegistry>  = {
     IRenderMimeRegistry
   ],
   activate
-}
+};
 
 function activate(
   app: JupyterLab,
@@ -42,13 +41,17 @@ function activate(
   restorer: ILayoutRestorer,
   mimeDocumentTracker: IMimeDocumentTracker,
   notebookTracker: INotebookTracker,
-  rendermime: IRenderMimeRegistry) : IVariableRegistry{
+  rendermime: IRenderMimeRegistry
+): IVariableRegistry {
+  const variablesView = new Hephaistos.VariableView({ docmanager, rendermime });
+  const registry = new VariableRegistry();
 
-    const variablesView = new Hephaistos.VariableView({ docmanager, rendermime })
-    const registry = new VariableRegistry()
+  variablesView.title.iconClass = 'jp-TableOfContents-icon jp-SideBar-tabIcon';
+  variablesView.title.caption = 'Variables';
+  variablesView.id = 'hephaistos-variables';
+  app.shell.addToLeftArea(variablesView, { rank: 700 });
 
-    app.shell.addToLeftArea(variablesView, { rank: 700 })
-    return registry
+  return registry;
 }
 
 export default extension;

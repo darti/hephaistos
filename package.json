@@ -26,7 +26,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf lib",
-    "prepare": "npm run clean && npm run build",
+    "prepare": "yarn run clean && yarn run build",
     "watch": "tsc -w"
   },
   "dependencies": {
@@ -37,6 +37,7 @@
     "@jupyterlab/docmanager": "^0.19.1",
     "@jupyterlab/docregistry": "^0.19.1",
     "@jupyterlab/fileeditor": "^0.19.1",
+    "@jupyterlab/inspector": "^0.19.1",
     "@jupyterlab/notebook": "^0.19.1",
     "@jupyterlab/rendermime": "^0.19.1",
     "@phosphor/algorithm": "^1.1.2",
